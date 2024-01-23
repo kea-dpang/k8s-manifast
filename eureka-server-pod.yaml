@@ -21,8 +21,8 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: kubernetes.io/hostname
+              - key: nodepool
                 operator: In
                 values:
-                - host-172-16-18-75
-                - host-172-16-19-178
+                - backend
+
