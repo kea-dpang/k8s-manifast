@@ -1,28 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mileage-server-deployment
+  name: eureka-server-deployment
   namespace: backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: mileage-server
+      app: eureka-server
   template:
     metadata:
       labels:
-        app: mileage-server
+        app: eureka-server
     spec:
       containers:
-      - name: mileage-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server
+      - name: eureka-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: kubernetes.io/hostname
+              - key: nodepool
                 operator: In
                 values:
-                - host-172-16-18-75
-                - host-172-16-19-178
+                - backend
