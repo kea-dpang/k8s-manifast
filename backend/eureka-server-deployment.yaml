@@ -1,21 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: notification-server-deployment
+  name: eureka-server-deployment
   namespace: backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: notification-server
+      app: eureka-server
   template:
     metadata:
       labels:
-        app: notification-server
+        app: eureka-server
     spec:
       containers:
-      - name: notification-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/notification-server
+      - name: eureka-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server
+        ports:
+        - containerPort: 8080
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

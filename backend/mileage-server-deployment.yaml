@@ -1,21 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: eureka-server-deployment
+  name: mileage-server-deployment
   namespace: backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: eureka-server
+      app: mileage-server
   template:
     metadata:
       labels:
-        app: eureka-server
+        app: mileage-server
     spec:
       containers:
-      - name: eureka-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server
+      - name: mileage-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server
+        ports:
+        - containerPort: 8080
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -25,4 +27,3 @@ spec:
                 operator: In
                 values:
                 - backend
-
