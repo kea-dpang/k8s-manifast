@@ -16,6 +16,8 @@ spec:
       containers:
       - name: eureka-server-container
         image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server
+        ports:
+        - containerPort: 8080
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
