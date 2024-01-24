@@ -18,25 +18,6 @@ spec:
           image: docker.elastic.co/logstash/logstash:7.10.1
           ports:
             - containerPort: 9600
-          volumeMounts:
-            - name: logstash-config
-              mountPath: /usr/share/logstash/config/logstash.yml
-              subPath: logstash.yml
-            - name: pipeline
-              mountPath: /usr/share/logstash/pipeline
-            - name: mysql-connector
-              mountPath: /usr/share/logstash/logstash-core/lib/jars/mysql-connector-java.jar
-              subPath: mysql-connector-java.jar
-      volumes:
-        - name: logstash-config
-          configMap:
-            name: logstash-config
-        - name: pipeline
-          persistentVolumeClaim:
-            claimName: pipeline-pvc
-        - name: mysql-connector
-          persistentVolumeClaim:
-            claimName: mysql-connector-pvc
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
