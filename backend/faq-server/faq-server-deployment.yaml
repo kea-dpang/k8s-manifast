@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mileage-server-deployment
+  name: faq-server-deployment
   namespace: backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: mileage-server
+      app: faq-server
   template:
     metadata:
       labels:
-        app: mileage-server
+        app: faq-server
     spec:
       containers:
-      - name: mileage-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server
+      - name: faq-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/faq-server:0.2.0
         ports:
         - containerPort: 8080
       affinity:

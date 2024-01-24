@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: notification-server-deployment
+  name: mileage-server-deployment
   namespace: backend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: notification-server
+      app: mileage-server
   template:
     metadata:
       labels:
-        app: notification-server
+        app: mileage-server
     spec:
       containers:
-      - name: notification-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/notification-server
+      - name: mileage-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server:0.2.0
         ports:
         - containerPort: 8080
       affinity:
