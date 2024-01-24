@@ -7,7 +7,6 @@ spec:
   selector:
     app: kibana
   ports:
-    - protocol: TCP
-      port: 5601
-      targetPort: 5601
-  type: ClusterIP
+  - port: 5601
+    targetPort: 5601
+  type: LoadBalancer

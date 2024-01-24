@@ -24,7 +24,7 @@ spec:
           ports:
             - containerPort: 5601
           volumeMounts:
-            - name: kibana-config
+            - name: kibana-config 
               mountPath: /usr/share/kibana/config/kibana.yml
               subPath: kibana.yml
       volumes:
