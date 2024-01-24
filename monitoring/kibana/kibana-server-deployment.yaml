@@ -23,14 +23,6 @@ spec:
               value: "http://enterprise-search:3002"
           ports:
             - containerPort: 5601
-          volumeMounts:
-            - name: kibana-config
-              mountPath: /usr/share/kibana/config/kibana.yml
-              subPath: kibana.yml
-      volumes:
-        - name: kibana-config
-          configMap:
-            name: kibana-config
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
