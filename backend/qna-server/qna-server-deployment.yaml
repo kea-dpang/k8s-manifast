@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qna-server-deployment
+  namespace: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: qna-server
+  template:
+    metadata:
+      labels:
+        app: qna-server
+    spec:
+      containers:
+      - name: qna-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/qna-server:latest
+        ports:
+        - containerPort: 8080
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodepool
+                operator: In
+                values:
+                - backend
