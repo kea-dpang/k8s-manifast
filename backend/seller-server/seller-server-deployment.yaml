@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seller-server-deployment
+  namespace: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: seller-server
+  template:
+    metadata:
+      labels:
+        app: seller-server
+    spec:
+      containers:
+      - name: seller-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/seller-server:latest
+        ports:
+        - containerPort: 8080
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodepool
+                operator: In
+                values:
+                - backend
