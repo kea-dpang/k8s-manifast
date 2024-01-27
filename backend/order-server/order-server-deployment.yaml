@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: order-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/order-server:0.1.0
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/order-server:0.2.0
         ports:
         - containerPort: 8080
       affinity:
