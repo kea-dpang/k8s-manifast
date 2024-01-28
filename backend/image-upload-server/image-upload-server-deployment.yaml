@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-upload-server-deployment
+  namespace: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: image-upload-server
+  template:
+    metadata:
+      labels:
+        app: image-upload-server
+    spec:
+      containers:
+      - name: image-upload-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/image-upload-server:latest
+        ports:
+        - containerPort: 8080
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodepool
+                operator: In
+                values:
+                - backend
