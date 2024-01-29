@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: event-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/event-server:0.1.5
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/event-server:0.1.6
         ports:
         - containerPort: 8080
       affinity:
