@@ -8,6 +8,6 @@ spec:
     app: user-server
   ports:
     - protocol: TCP
-      port: 86
+      port: 80
       targetPort: 8080
   type: ClusterIP

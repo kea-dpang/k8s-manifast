@@ -8,6 +8,6 @@ spec:
     app: mileage-server
   ports:
     - protocol: TCP
-      port: 82
+      port: 80
       targetPort: 8080
   type: ClusterIP
