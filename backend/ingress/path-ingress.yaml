@@ -1,0 +1,90 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: path-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      # 테스트 용 nginx
+      - path: /nginx/
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+      - path: /event/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: event-server-service
+            port:
+              number: 80
+      - path: /faq/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: faq-server-service
+            port:
+              number: 80
+      - path: /image-upload/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: image-upload-server-service
+            port:
+              number: 80
+      - path: /item/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: item-server-service
+            port:
+              number: 80
+      - path: /mileage/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mileage-server-service
+            port:
+              number: 80
+      - path: /notification/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: notification-server-service
+            port:
+              number: 80
+      - path: /order/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: order-server-service
+            port:
+              number: 80
+      - path: /qna/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: qna-server-service
+            port:
+              number: 80
+      - path: /seller/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: seller-server-service
+            port:
+              number: 80
+      - path: /user/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: user-server-service
+            port:
+              number: 80
