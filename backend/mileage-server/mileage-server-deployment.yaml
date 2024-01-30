@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: mileage-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server:0.8.2
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server:0.9.0
         ports:
         - containerPort: 8080
       affinity:
