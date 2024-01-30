@@ -4,7 +4,7 @@ metadata:
   name: image-upload-server-deployment
   namespace: backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: image-upload-server
