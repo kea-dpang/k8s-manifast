@@ -15,9 +15,23 @@ spec:
     spec:
       containers:
         - name: logstash
-          image: docker.elastic.co/logstash/logstash:7.10.1
+          image: minseo3347/my-logstash-image-amd64:latest
           ports:
             - containerPort: 9600
+          volumeMounts:
+            - name: logstash-config-volume
+              mountPath: /usr/share/logstash/config/logstash.yml
+              subPath: logstash.yml
+            - name: logstash-pipeline-volume
+              mountPath: /usr/share/logstash/pipeline/logstash.conf
+              subPath: logstash.conf
+      volumes:
+        - name: logstash-config-volume
+          configMap:
+            name: logstash-config
+        - name: logstash-pipeline-volume
+          configMap:
+            name: logstash-config
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
