@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: notification-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/notification-server:0.5.0
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/notification-server:latest
         ports:
         - containerPort: 8080
       
