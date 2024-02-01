@@ -3,8 +3,10 @@ kind: Deployment
 metadata:
   name: order-server-deployment
   namespace: backend
+  annotations:
+    revision: "5"  # git에서 버전 관리가 되기 때문에 default보다 낮게 설정
 spec:
-  replicas: 1
+  replicas: 1 # prod 단계에서 3으로 변경
   selector:
     matchLabels:
       app: order-server
@@ -18,6 +20,21 @@ spec:
         image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/order-server:0.5.0
         ports:
         - containerPort: 8080
+      
+        resources:
+          limits:
+            cpu: "0.03"
+            memory: "400Mi"
+          requests:
+            cpu: "0.003" # 모니터링 상 평균 0.003 CPU usage를 가짐
+            memory: "200Mi"
+        readinessProbe:
+          httpGet:
+            path: /healthz  # 애플리케이션의 상태를 체크할 endpoint path
+            port: 8080
+          initialDelaySeconds: 5  # 컨테이너 시작 후 readinessProbe 시작까지의 대기 시간
+          periodSeconds: 10 # readinessProbe을 실행하는 시간 간격
+          failureThreshold: 4 # readinessProbe 실패로 간주되는 실패 횟수
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,3 +44,5 @@ spec:
                 operator: In
                 values:
                 - backend
+      ## prod 단계에서 주석 제거
+      # terminationGracePeriodSeconds: 15 ## 파드 종료 시간 설정
