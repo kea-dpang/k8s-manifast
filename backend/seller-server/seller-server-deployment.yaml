@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: seller-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/seller-server:0.1.3
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/seller-server:0.1.4
         ports:
         - containerPort: 8080
       affinity:
