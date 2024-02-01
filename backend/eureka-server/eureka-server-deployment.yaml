@@ -21,13 +21,13 @@ spec:
         ports:
         - containerPort: 8761
         
-        resources:
-          limits:
-            cpu: "0.03"
-            memory: "400Mi"
-          requests:
-            cpu: "0.003" # 모니터링 상 평균 0.003 CPU usage를 가짐
-            memory: "200Mi"
+        # resources:
+        #   limits:
+        #     cpu: "0.03"
+        #     memory: "400Mi"
+        #   requests:
+        #     cpu: "0.003" # 모니터링 상 평균 0.003 CPU usage를 가짐
+        #     memory: "200Mi"
         # readinessProbe:
         #   httpGet:
         #     path: /healthz  # 애플리케이션의 상태를 체크할 endpoint path
