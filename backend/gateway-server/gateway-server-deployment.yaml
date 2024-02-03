@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   name: gateway-server-deployment
   namespace: backend
-  revision: "5" # git에서 버전 관리가 되기 때문에 default보다 낮게 설정
+  annotations:
+    revision: "5" # git에서 버전 관리가 되기 때문에 default보다 낮게 설정
 spec:
   replicas: 1 # prod 단계에서 3으로 변경
   selector:
@@ -22,10 +23,10 @@ spec:
 
         resources:
           limits:
-            cpu: "0.03"
+            cpu: 30m
             memory: "400Mi"
           requests:
-            cpu: "0.003" # 모니터링 상 평균 0.003 CPU usage를 가짐
+            cpu: 3m # 모니터링 상 평균 0.003 CPU usage를 가짐
             memory: "200Mi"
         # readinessProbe:
         #   httpGet:
