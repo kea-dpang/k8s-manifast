@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: item-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/item-server:0.3.2
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/item-server:0.3.3
         ports:
         - containerPort: 8080
       
