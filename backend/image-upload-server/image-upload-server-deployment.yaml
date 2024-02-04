@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: image-upload-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/image-upload-server:0.3.0
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/image-upload-server:0.4.0
         ports:
         - containerPort: 8080
 
