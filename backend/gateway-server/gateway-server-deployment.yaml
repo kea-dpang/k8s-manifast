@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gateway-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/gateway-server:0.4.6
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/gateway-server:0.4.7
         ports:
         - containerPort: 8080
 
