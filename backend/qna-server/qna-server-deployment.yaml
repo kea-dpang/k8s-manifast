@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: qna-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/qna-server:0.6.7
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/qna-server:0.6.8
         ports:
         - containerPort: 8080
       
