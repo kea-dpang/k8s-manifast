@@ -1,6 +1,0 @@
-#kibana.yml
-server.name: kibana
-server.host: "0"
-elasticsearch.hosts: [ "http://elasticsearch:9200" ]
-enterpriseSearch.host: 'http://enterprise-search:3002'
-monitoring.ui.container.elasticsearch.enabled: true

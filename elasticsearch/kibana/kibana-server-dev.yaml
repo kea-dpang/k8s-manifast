@@ -1,26 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kibana
-  namespace: elasticsearch
+  name: kibana-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kibana
+      app: kibana-dev
   template:
     metadata:
       labels:
-        app: kibana
+        app: kibana-dev
     spec:
       containers:
         - name: kibana
           image: docker.elastic.co/kibana/kibana:7.10.1
           env:
             - name: ELASTICSEARCH_HOSTS
-              value: "http://elasticsearch:9200"
-            - name: ENTERPRISE_SEARCH_HOST
-              value: "http://enterprise-search:3002"
+              value: "http://elasticsearch-dev:9200"
           ports:
             - containerPort: 5601
       affinity:
@@ -32,3 +29,15 @@ spec:
                 operator: In
                 values:
                 - elasticsearch
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana-dev
+spec:
+  selector:
+    app: kibana-dev
+  ports:
+  - port: 5601
+    targetPort: 5601
+  type: LoadBalancer

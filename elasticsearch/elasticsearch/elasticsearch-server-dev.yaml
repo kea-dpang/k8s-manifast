@@ -1,17 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: elasticsearch
-  namespace: elasticsearch
+  name: elasticsearch-dev
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: elasticsearch
+      app: elasticsearch-dev
   template:
     metadata:
       labels:
-        app: elasticsearch
+        app: elasticsearch-dev
     spec:
       containers:
         - name: elasticsearch
@@ -31,3 +30,16 @@ spec:
                 operator: In
                 values:
                 - elasticsearch
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-dev
+spec:
+  selector:
+    app: elasticsearch-dev
+  ports:
+    - protocol: TCP
+      port: 9200
+      targetPort: 9200
+  type: ClusterIP
