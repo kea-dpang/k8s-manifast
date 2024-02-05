@@ -31,7 +31,7 @@ spec:
           mountPath: /connector-dir
       containers:
         - name: logstash
-          image: docker.elastic.co/logstash/logstash:7.10.1
+          image: docker.elastic.co/logstash/logstash:7.10.2
           ports:
             - containerPort: 9600
           volumeMounts:
