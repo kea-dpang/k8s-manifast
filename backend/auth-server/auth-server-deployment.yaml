@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: auth-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/auth-server:0.8.2
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/auth-server:0.8.3
         ports:
         - containerPort: 8080
 
