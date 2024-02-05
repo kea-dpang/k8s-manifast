@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: logstash-dev
+  name: logstash
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: logstash-dev
+      app: logstash
   template:
     metadata:
       labels:
-        app: logstash-dev
+        app: logstash
     spec:
       volumes:
       - name: connector-dir
@@ -57,10 +57,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: logstash-dev
+  name: logstash
 spec:
   selector:
-    app: logstash-dev
+    app: logstash
   ports:
     - protocol: TCP
       port: 9600

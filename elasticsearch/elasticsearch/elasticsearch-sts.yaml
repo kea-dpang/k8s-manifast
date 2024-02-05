@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: elasticsearch-dev
+  name: elasticsearch
 spec:
   replicas: 2
-  serviceName: elasticsearch-dev
+  serviceName: elasticsearch
   selector:
     matchLabels:
-      app: elasticsearch-dev
+      app: elasticsearch
   template:
     metadata:
       labels:
-        app: elasticsearch-dev
+        app: elasticsearch
     spec:
       containers:
         - name: elasticsearch
@@ -47,10 +47,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: elasticsearch-dev
+  name: elasticsearch
 spec:
   selector:
-    app: elasticsearch-dev
+    app: elasticsearch
   ports:
     - protocol: TCP
       port: 9200
