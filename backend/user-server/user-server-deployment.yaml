@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: user-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/user-server:0.13.3
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/user-server:0.13.4
         ports:
         - containerPort: 8080
       
