@@ -41,3 +41,7 @@ data:
     }
 ```
 
+### 참고
+```
+[your-database-endpoint], [your-database-name], [your-database-user], [your-database-password], [your-table-name], [your-type], [your-field-name] 는 실제 값으로 대체
+```
