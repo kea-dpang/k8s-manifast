@@ -80,11 +80,11 @@
 ### helm-values
 'helm-values' 디렉토리는 'loki'와 'prometheus' 두 가지 서브 디렉토리를 포함하고 있고, 각각의 서브 디렉토리는 해당 서비스의 values.yaml 파일을 포함하고 있습니다.
 
-본 프로젝트에서 사용한 helm chart는 다음과 같습니다:
+본 프로젝트에서 사용한 helm chart는 다음과 같습니다. Helm chart 사용은 [여기](https://github.com/kea-dpang/k8s-manifast/blob/dev/helm-values/README.md)를 참고해주세요:
 |Chart|URL|
 |---|---|
+|cpo|https://kubernetes.github.io/cloud-provider-openstack|
 |prometheus-community|https://prometheus-community.github.io/helm-charts|
 |grafana|https://grafana.github.io/helm-charts|
-|cpo|https://kubernetes.github.io/cloud-provider-openstack|
 |metrics-server|https://kubernetes-sigs.github.io/metrics-server/|
 |ingress-nginx|https://kubernetes.github.io/ingress-nginx|
