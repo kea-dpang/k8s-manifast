@@ -20,7 +20,9 @@ spec:
         image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/item-server:0.8.2
         ports:
         - containerPort: 8080
-      
+        env:
+        - name: TZ
+          value: "Asia/Seoul"
         # resources:
         #   limits:
         #     cpu: "0.03"

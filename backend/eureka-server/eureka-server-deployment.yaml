@@ -20,7 +20,9 @@ spec:
         image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server:latest
         ports:
         - containerPort: 8761
-        
+        env:
+        - name: TZ
+          value: "Asia/Seoul"
         # resources:
         #   limits:
         #     cpu: "0.03"
