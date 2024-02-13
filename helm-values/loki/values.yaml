@@ -1541,6 +1541,7 @@ minio:
       purge: false
   persistence:
     size: 5Gi
+    storageClassName: csi-cinder-sc-delete
   resources:
     requests:
       cpu: 100m
