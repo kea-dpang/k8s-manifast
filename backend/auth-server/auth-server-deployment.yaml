@@ -24,9 +24,9 @@ spec:
         - name: TZ
           value: "Asia/Seoul"
         resources:
-          limits:
-            cpu: "100m"
-            memory: "1Gi"
+          #limits:
+            #cpu: "100m"
+            #memory: "1Gi"
           requests:
             cpu: "10m"
             memory: "500Mi"
