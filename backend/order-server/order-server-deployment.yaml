@@ -23,7 +23,7 @@ spec:
         env:
         - name: TZ
           value: "Asia/Seoul"
-         resources:
+        resources:
           # limits:
             # cpu: "100m"
             # memory: "1Gi"
