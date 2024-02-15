@@ -3,9 +3,8 @@ kind: Deployment
 metadata:
   name: auth-server-deployment
   namespace: backend
-  annotations:
-    revision: "5" # git에서 버전 관리가 되기 때문에 default보다 낮게 설정
 spec:
+  revisionHistoryLimit: 5
   replicas: 4 # prod 단계에서 3으로 변경
   selector:
     matchLabels:
@@ -39,5 +38,4 @@ spec:
                 operator: In
                 values:
                 - backend
-      ## prod 단계에서 주석 제거
-      # terminationGracePeriodSeconds: 15 ## 파드 종료 시간 설정
+      terminationGracePeriodSeconds: 20
