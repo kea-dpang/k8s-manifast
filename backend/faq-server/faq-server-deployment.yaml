@@ -3,10 +3,9 @@ kind: Deployment
 metadata:
   name: faq-server-deployment
   namespace: backend
-  annotations:
-    revision: "5" # git에서 버전 관리가 되기 때문에 default보다 낮게 설정
 spec:
-  replicas: 2 # prod 단계에서 3으로 변경
+  revisionHistoryLimit: 5
+  replicas: 2 
   selector:
     matchLabels:
       app: faq-server
@@ -23,10 +22,7 @@ spec:
         env:
         - name: TZ
           value: "Asia/Seoul"
-        # resources:
-          # limits:
-            # cpu: "100m"
-            # memory: "1Gi"
+        resources:
           requests:
             cpu: "10m"
             memory: "500Mi"
@@ -39,5 +35,4 @@ spec:
                 operator: In
                 values:
                 - backend
-      ## prod 단계에서 주석 제거
-      # terminationGracePeriodSeconds: 15 ## 파드 종료 시간 설정
+      terminationGracePeriodSeconds: 15 
