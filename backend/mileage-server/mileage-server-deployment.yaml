@@ -6,7 +6,7 @@ metadata:
   annotations:
     revision: "5"  # git에서 버전 관리가 되기 때문에 default보다 낮게 설정
 spec:
-  replicas: 2 # prod 단계에서 3으로 변경
+  replicas: 4 # prod 단계에서 3으로 변경
   selector:
     matchLabels:
       app: mileage-server
