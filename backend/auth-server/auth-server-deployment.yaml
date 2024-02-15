@@ -5,7 +5,7 @@ metadata:
   namespace: backend
 spec:
   revisionHistoryLimit: 5
-  replicas: 4 # prod 단계에서 3으로 변경
+  replicas: 4 
   selector:
     matchLabels:
       app: auth-server
@@ -23,9 +23,6 @@ spec:
         - name: TZ
           value: "Asia/Seoul"
         resources:
-          #limits:
-            #cpu: "100m"
-            #memory: "1Gi"
           requests:
             cpu: "10m"
             memory: "500Mi"
