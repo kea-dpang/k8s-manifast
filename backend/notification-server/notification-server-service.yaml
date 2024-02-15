@@ -8,6 +8,6 @@ spec:
     app: notification-server
   ports:
     - protocol: TCP
-      port: 83
+      port: 80
       targetPort: 8080
   type: ClusterIP

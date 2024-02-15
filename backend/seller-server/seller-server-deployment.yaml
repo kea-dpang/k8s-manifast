@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faq-server-deployment
+  name: seller-server-deployment
   namespace: backend
 spec:
   revisionHistoryLimit: 5
-  replicas: 2 
+  replicas: 3
   selector:
     matchLabels:
-      app: faq-server
+      app: seller-server
   template:
     metadata:
       labels:
-        app: faq-server
+        app: seller-server
     spec:
       containers:
-      - name: faq-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/faq-server:0.9.2
+      - name: seller-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/seller-server:0.1.6
         ports:
         - containerPort: 8080
         env:

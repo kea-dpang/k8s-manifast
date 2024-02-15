@@ -4,7 +4,8 @@ metadata:
   name: eureka-server-deployment
   namespace: backend
 spec:
-  replicas: 2
+  revisionHistoryLimit: 5
+  replicas: 1
   selector:
     matchLabels:
       app: eureka-server
@@ -15,9 +16,12 @@ spec:
     spec:
       containers:
       - name: eureka-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/eureka-server:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8761
+        env:
+        - name: TZ
+          value: "Asia/Seoul"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,3 +31,4 @@ spec:
                 operator: In
                 values:
                 - backend
+      terminationGracePeriodSeconds: 30

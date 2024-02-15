@@ -1,0 +1,103 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: path-ingress
+  annotations:
+    # spring에서의 paht 설정으로 인해 k8s에서 path를 "/"로 함
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # 현재 ssl 인증이 없기 때문에 false로 설정함
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: backend
+  rules:
+  - http:
+      paths:
+      # # 테스트 용 nginx
+      # - path: /nginx/
+      #   pathType: Prefix
+      #   backend:
+      #     service:
+      #       name: nginx-service
+      #       port:
+      #         number: 80
+      
+      # event
+      - path: /event/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: event-server-service
+            port:
+              number: 80
+      # faq
+      - path: /faq/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: faq-server-service
+            port:
+              number: 80
+      # image-upload
+      - path: /image-upload/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: image-upload-server-service
+            port:
+              number: 80
+      # item
+      - path: /item/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: item-server-service
+            port:
+              number: 80
+      # mileage
+      - path: /mileage/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: mileage-server-service
+            port:
+              number: 80
+      # notification
+      - path: /notification/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: notification-server-service
+            port:
+              number: 80
+      # order
+      - path: /order/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: order-server-service
+            port:
+              number: 80
+      # qna
+      - path: /qna/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: qna-server-service
+            port:
+              number: 80
+      # seller
+      - path: /seller/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: seller-server-service
+            port:
+              number: 80
+      # user
+      - path: /user/(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: user-server-service
+            port:
+              number: 80

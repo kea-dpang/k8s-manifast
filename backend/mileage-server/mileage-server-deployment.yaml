@@ -4,7 +4,8 @@ metadata:
   name: mileage-server-deployment
   namespace: backend
 spec:
-  replicas: 2
+  revisionHistoryLimit: 5
+  replicas: 4
   selector:
     matchLabels:
       app: mileage-server
@@ -15,9 +16,16 @@ spec:
     spec:
       containers:
       - name: mileage-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server:0.2.0
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/mileage-server:0.12.0
         ports:
         - containerPort: 8080
+        env:
+        - name: TZ
+          value: "Asia/Seoul"
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "500Mi"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,3 +35,4 @@ spec:
                 operator: In
                 values:
                 - backend
+      terminationGracePeriodSeconds: 15

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: faq-server-deployment
+  name: image-upload-server-deployment
   namespace: backend
 spec:
   revisionHistoryLimit: 5
   replicas: 2 
   selector:
     matchLabels:
-      app: faq-server
+      app: image-upload-server
   template:
     metadata:
       labels:
-        app: faq-server
+        app: image-upload-server
     spec:
       containers:
-      - name: faq-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/faq-server:0.9.2
+      - name: image-upload-server-container
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/image-upload-server:0.4.2
         ports:
         - containerPort: 8080
         env:

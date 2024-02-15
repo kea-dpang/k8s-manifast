@@ -4,7 +4,8 @@ metadata:
   name: notification-server-deployment
   namespace: backend
 spec:
-  replicas: 2
+  revisionHistoryLimit: 5
+  replicas: 2 
   selector:
     matchLabels:
       app: notification-server
@@ -15,9 +16,16 @@ spec:
     spec:
       containers:
       - name: notification-server-container
-        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/notification-server:0.1.0
+        image: dpang-shop-dev.kr-gov-central-1.kcr.dev/dpang-backend/notification-server:0.8.0
         ports:
         - containerPort: 8080
+        env:
+        - name: TZ
+          value: "Asia/Seoul"
+        resources:
+          requests:
+            cpu: "10m"
+            memory: "500Mi"
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -27,3 +35,4 @@ spec:
                 operator: In
                 values:
                 - backend
+      terminationGracePeriodSeconds: 15
